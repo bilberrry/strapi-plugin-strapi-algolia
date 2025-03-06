@@ -1,43 +1,14 @@
 # Strapi plugin strapi-algolia
 
-A strapi plugin to sync your strapi content with Algolia.
-
-[![npm package version](https://badgen.net/npm/v/strapi-plugin-strapi-algolia)](https://npmjs.com/package/strapi-plugin-strapi-algolia)
-[![npm package daily downloads](https://badgen.net/npm/dm/strapi-plugin-strapi-algolia)](https://npmjs.com/package/strapi-plugin-strapi-algolia)
-[![github stars](https://badgen.net/github/stars/wizbii/strapi-plugin-strapi-algolia)](https://gitHub.com/wizbii/strapi-plugin-strapi-algolia)
-[![github issues](https://img.shields.io/github/issues/wizbii/strapi-plugin-strapi-algolia.svg)](https://gitHub.com/wizbii/strapi-plugin-strapi-algolia/issues/)
-[![main workflow](https://github.com/wizbii/strapi-plugin-strapi-algolia/actions/workflows/main.yml/badge.svg)](https://github.com/wizbii/strapi-plugin-strapi-algolia/actions)
+A Strapi plugin to sync your Strapi content with Algolia.  
+**NOTE** Plugin works with Strapi v5, no version for Strapi v4 and lower.
 
 ## Getting started
 
 ### 1. Installation
 
-#### Strapi v5 - Use latest version
-
-##### With Yarn
-
 ```bash
-yarn add strapi-plugin-strapi-algolia@latest
-```
-
-###### With NPM
-
-```bash
-npm install --save strapi-plugin-strapi-algolia@latest
-```
-
-#### Strapi v4 - Use version 1.x.x
-
-##### With Yarn
-
-```bash
-yarn add strapi-plugin-strapi-algolia@1
-```
-
-###### With NPM
-
-```bash
-npm install --save strapi-plugin-strapi-algolia@1
+yarn add @bilberrry/strapi-plugin-strapi-algolia
 ```
 
 ### 2. Setup environment variables

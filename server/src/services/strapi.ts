@@ -22,6 +22,7 @@ export default ({ strapi }: { strapi: Core.Strapi }) => ({
 
     const strapiObject = await strapi.documents(modelUid).findOne({
       documentId: event.result.documentId,
+      locale: event.result.locale,
       // the documentId can have a published & unpublished version associated
       // without a status filter, the unpublished version could be returned even if a published on exists,
       // which would incorrectly de-index.
@@ -29,10 +30,8 @@ export default ({ strapi }: { strapi: Core.Strapi }) => ({
       populate,
     });
 
-    if (!strapiObject) {
-      throw new Error(
-        `No entry found for ${modelUid} with ID ${entryId}`
-      );
+    if (!strapiObject || String(strapiObject.id) !== String(entryId)) {
+      return null;
     }
 
     return utilsService.filterProperties(strapiObject, hideFields);
@@ -66,13 +65,15 @@ export default ({ strapi }: { strapi: Core.Strapi }) => ({
           hideFields
         );
 
-        if (strapiObject.publishedAt === null) {
-          objectsIdsToDelete.push(entryId);
-        } else {
-          objectsToSave.push({
-            objectID: entryId,
-            ...strapiObject,
-          });
+        if (strapiObject) {
+          if (strapiObject.publishedAt === null) {
+            objectsIdsToDelete.push(entryId);
+          } else {
+            objectsToSave.push({
+              objectID: entryId,
+              ...strapiObject,
+            });
+          }
         }
       } catch (error) {
         console.error(
